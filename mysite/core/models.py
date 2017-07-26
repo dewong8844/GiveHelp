@@ -3,12 +3,12 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
-class ServiceType(models.Model):
+class TaskType(models.Model):
     description = models.CharField(max_length=200, blank=True)
     car_needed = models.BooleanField(default=False)
 
     def __str__(self):
-        return 'Service Type: ' + self.description
+        return 'Task Type: ' + self.description
 
 class Profile(models.Model):
     SENIOR = 'SENIOR'
@@ -34,7 +34,7 @@ class Profile(models.Model):
     home_city = models.CharField(max_length=30, blank=True)
     home_state = models.CharField(max_length=2, blank=True)
     home_zipcode = models.CharField(max_length=9, blank=True)
-    service_types = models.ManyToManyField(ServiceType, blank=True) 
+    task_types = models.ManyToManyField(TaskType, blank=True) 
     has_disability = models.BooleanField(default=False)
 
     def __str__(self):
@@ -50,13 +50,13 @@ def save_user_profile(sender, instance, **kwargs):
     instance.profile.save()
 
 
-class Service(models.Model):
+class Task(models.Model):
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
-    service_type = models.ForeignKey(ServiceType, on_delete=models.CASCADE)
+    task_type = models.ForeignKey(TaskType, on_delete=models.CASCADE)
     datetime = models.DateField(null=True, blank=True)
     duration = models.DurationField(null=True, blank=True)
 
-    HOME = 'HOME'    # Service Location is at home
+    HOME = 'HOME'    # Task Location is at home
     TRIP = 'TRIP'    # Trip is from home to a destination address
     OTHER = 'OTHER'
     LOCATION_CHOICES = (
@@ -66,7 +66,7 @@ class Service(models.Model):
     )
     location = models.CharField(max_length=5, choices=LOCATION_CHOICES,
                                  default=HOME)
-    NEW = 'NEW'     # Service "ticket" just created
+    NEW = 'NEW'     # Task "ticket" just created
     ASD = 'ASD'
     CMD = 'CMD'
     STATUS_CHOICES = (
@@ -76,6 +76,7 @@ class Service(models.Model):
     )
     status = models.CharField(max_length=3, choices=STATUS_CHOICES,
                                  default=NEW)
+    assigned_to = models.CharField(max_length=100, blank=True)
     address = models.CharField(max_length=100, blank=True)
     city = models.CharField(max_length=30, blank=True)
     state = models.CharField(max_length=2, blank=True)
@@ -84,4 +85,4 @@ class Service(models.Model):
     special_instructions = models.TextField(max_length=500, blank=True)
 
     def __str__(self):
-        return 'Service type: ' + self.service_type.description + ' for ' + self.profile.user.username
+        return 'Task type: ' + self.task_type.description + ' for ' + self.profile.user.username

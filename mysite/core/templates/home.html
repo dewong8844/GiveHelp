@@ -6,7 +6,13 @@
   <!-- <p>Your birth date: {{ user.profile.birth_date }}</p> -->
   <p>You are signed in as: {{ user.profile.user_type }}</p>
   {% else %}
-  <h2>Welcome to Volunteer4Seniors!</h2>
-  <p>Please sign in or register to volunteer or get help</p>
+  <h2>Welcome to our site!</h2>
+  <p>Please sign in or register to get help or to volunteer</p>
   {% endif %}
+
+  <h3>Types of tasks available: </h3>
+  {% for tasktype in object_list %}
+      <li>{{ tasktype.description }}</li>
+  {% endfor %}
 {% endblock %}
+
