@@ -11,16 +11,16 @@ class ServiceType(models.Model):
         return 'Service Type: ' + self.description
 
 class Profile(models.Model):
-    SENIOR = 'SR'
-    VOLUNTEER = 'VR'
-    BOTH = 'BH'
+    SENIOR = 'SENIOR'
+    VOLUNTEER = 'VOLUNTEER'
+    BOTH = 'BOTH'
     USER_TYPE_CHOICES = (
         (SENIOR, 'Senior'),
         (VOLUNTEER, 'Volunteer'),
         (BOTH, 'Both'),
     )
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    user_type = models.CharField(max_length=2, choices=USER_TYPE_CHOICES,
+    user_type = models.CharField(max_length=9, choices=USER_TYPE_CHOICES,
                                  default=SENIOR, blank=True)
     birth_date = models.DateField(null=True, blank=True)
     gender = models.CharField(max_length=20, blank=True)
@@ -29,7 +29,7 @@ class Profile(models.Model):
     driver_license_state = models.CharField(max_length=2, blank=True)
     car_license_plate = models.CharField(max_length=20, blank=True)
     car_license_state = models.CharField(max_length=2, blank=True)
-    photo = models.ImageField(upload_to='profile', blank=True)
+    photo = models.ImageField(upload_to='profiles', blank=True)
     home_address = models.CharField(max_length=100, blank=True)
     home_city = models.CharField(max_length=30, blank=True)
     home_state = models.CharField(max_length=2, blank=True)
