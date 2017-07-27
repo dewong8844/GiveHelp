@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+        <h3>Volunteering tasks in the system:</h3>
+        {% for task in object_list %}
+                <h5>{{ task.datetime|date:"D Y-m-d h:i A" }}<a
+                     href="/task/{{task.id}}">  {{ task.task_type }} for {{ task.profile.user.first_name }} </a></h5>
+        {% endfor %}
+{% endblock %}
+

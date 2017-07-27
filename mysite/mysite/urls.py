@@ -1,4 +1,4 @@
-from django.conf.urls import url
+from django.conf.urls import url, include
 from django.contrib import admin
 from django.views.generic import ListView, DetailView
 from django.contrib.auth import views as auth_views
@@ -13,4 +13,5 @@ urlpatterns = [
     url(r'^signup/$', core_views.signup, name='signup'),
     url(r'^profile/$', core_views.edit_profile, name='edit_profile'),
     url(r'^$', ListView.as_view(queryset=TaskType.objects.all()[:25], template_name="home.html"), name='home'),
+    url(r'^task/', include('task.urls')),
 ]

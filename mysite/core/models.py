@@ -2,13 +2,14 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+import datetime
 
 class TaskType(models.Model):
     description = models.CharField(max_length=200, blank=True)
     car_needed = models.BooleanField(default=False)
 
     def __str__(self):
-        return 'Task Type: ' + self.description
+        return 'Task: ' + self.description
 
 class Profile(models.Model):
     SENIOR = 'SENIOR'
@@ -53,7 +54,7 @@ def save_user_profile(sender, instance, **kwargs):
 class Task(models.Model):
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
     task_type = models.ForeignKey(TaskType, on_delete=models.CASCADE)
-    datetime = models.DateField(null=True, blank=True)
+    datetime = models.DateTimeField(null=True, blank=True)
     duration = models.DurationField(null=True, blank=True)
 
     HOME = 'HOME'    # Task Location is at home

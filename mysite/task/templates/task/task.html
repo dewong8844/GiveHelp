@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+        <h3>{{task.task_type}}</h3>
+        <h5>Date: {{task.datetime}}</h5>
+        <h5>Duration: {{task.duration}} (days:hours:minutes)</h5>
+        <h5>Location: {{task.location}}</h5>
+        <h5>Instructions: {{task.special_instructions}}</h5>
+        <h5>For: {{task.profile.user.first_name}} {{task.profile.user.last_name}}</h5>
+        <h5>Email: {{task.profile.user.email}}</h5>
+        <h5>Home Address: {{task.profile.home_address}} {{task.profile.home_city}} {{task.profile.home_state}} {{task.profile.home_zip}}</h5>
+{% endblock %}
