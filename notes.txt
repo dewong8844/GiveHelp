@@ -3,3 +3,20 @@ Django beginner tutorial, see https://github.com/dewong8844/django-tutorial
 User login/logout, see https://simpleisbetterthancomplex.com/tutorial/2016/06/27/how-to-use-djangos-built-in-login-system.html
 
 User signup (Sign Up With Profile Model), see https://simpleisbetterthancomplex.com/tutorial/2017/02/18/how-to-create-user-sign-up-view.html#sign-up-with-profile-model
+
+To allow viewing webpage outside host, give <ip-address>:<port> in runserver command and add ip-address (or hostname) to ALLOWED_HOSTS in settings.py
+
+$ python3 manage.py runserver 192.168.1.104:8000
+
+In settings.py, set the host/ip-address:
+
+ALLOWED_HOSTS = [ '192.168.1.104' ]
+
+todo list:
+----------
+2017-07-28
+- add city/neighborhood/community list that users can choose from
+- finish up the edit profile form
+- finish up the add task form
+- add way for volunteer to pick a task that he/she wants to work on
+- 

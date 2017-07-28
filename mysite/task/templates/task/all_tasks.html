@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
+        <h3><a class="btn-primary" href="{% url 'new' %}">Create New Task</a></h3>
         <h3>Volunteering tasks in the system:</h3>
         {% for task in object_list %}
                 <h5>{{ task.datetime|date:"D Y-m-d h:i A" }}<a
