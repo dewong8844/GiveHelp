@@ -1,0 +1,67 @@
+Website: Volunteer4Senior
+
+
+
+Pre-defined List of Services: Ride, Cooking, House Cleaning, Laundry, Grocery Shopping, Doctor Visits, Translation, Handyman jobs
+
+Pre-defined List of Coverage Areas(cities)
+
+
+
+Page to allow register or login
+
+Register:
+
+=======
+
+Help givers need to register with the following info:
+
+
+
+Full Name
+
+DOB, has to be 18+ years old above
+
+Gender
+
+Driver’s Lic number
+
+Car license plate number
+
+Upload a recent photo
+
+Email address
+
+Cell phone number
+
+Lists of pre-defined services can provide
+
+List of pre-defined cities can provide the services
+
+
+
+Seniors need to register with the following info:
+
+Full Name
+
+DOB, has to be 60+ years old 
+
+Gender
+
+Home Address
+
+Phone number
+
+Contact person’s full name and phone number
+
+
+
+Upon Logged In:
+
+=====
+
+Helper can see all the help requests and update the status (e.g. Assigned, Completed)
+
+
+
+Senior can select date, time and the type of help he/she needs. When submit a request, all the help givers signed up to that type of help will receive an email notification with a link to the website for helper to login to and take the job.
